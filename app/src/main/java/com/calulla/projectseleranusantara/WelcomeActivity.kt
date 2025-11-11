@@ -14,7 +14,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         btnStart.setOnClickListener {
             // Pindah ke halaman Login (atau Main)
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, Register::class.java)
             startActivity(intent)
             finish()
         }

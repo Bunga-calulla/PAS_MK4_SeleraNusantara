@@ -15,7 +15,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Header -->
+            <!-- HEADER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,40 +28,28 @@
                     android:src="@drawable/avatar"
                     android:layout_marginRight="12dp" />
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                <LinearLayout>
+                    <TextView
+                        android:text="Welcome 👋"
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome 👋" />
-
-                    <TextView
-                        android:id="@+id/textView2"
                         android:text="Tasya Aulianza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/imgNotif"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
                     android:src="@drawable/ic_notification" />
 
             </LinearLayout>
 
-            <!-- Popular Recipe -->
+            <!-- Popular -->
             <TextView
                 android:text="Popular recipe"
                 android:textStyle="bold"
@@ -74,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false" />
 
-            <!-- New Recipe -->
+            <!-- New -->
             <TextView
                 android:text="New recipe"
                 android:textStyle="bold"
@@ -98,8 +86,7 @@
                 android:id="@+id/rvExplore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginTop="10dp" />
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
     </ScrollView>
@@ -112,11 +99,11 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <TextView android:text="Home" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" />
-        <TextView android:text="Search" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" />
-        <TextView android:text="Post" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" />
-        <TextView android:text="Saved" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" />
-        <TextView android:text="Profile" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" />
+        <TextView android:text="Home" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"/>
+        <TextView android:text="Search" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"/>
+        <TextView android:text="Post" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"/>
+        <TextView android:text="Saved" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"/>
+        <TextView android:text="Profile" android:layout_width="0dp" android:layout_height="wrap_content" android:gravity="center" android:layout_weight="1"/>
 
     </LinearLayout>
 

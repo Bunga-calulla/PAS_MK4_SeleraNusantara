@@ -12,9 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Projectseleranusantara">
         <activity
-            android:name=".Register"
+            android:name=".Home"
             android:exported="false" />
-        <!-- Halaman Welcome jadi tampilan awal -->
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" /> <!-- Halaman Welcome jadi tampilan awal -->
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

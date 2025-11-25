@@ -20,7 +20,8 @@
         <activity
             android:name=".Register"
             android:exported="false" /> <!-- Halaman Welcome jadi tampilan awal -->
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".WelcomeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

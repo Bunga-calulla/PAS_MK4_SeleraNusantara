@@ -10,11 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/recipe_big"
+        android:src="@drawable/Nasi_kuning"
         android:background="@drawable/rounded_img" />
 
     <TextView
         android:id="@+id/txtExploreTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Traditional spare ribs baked"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -22,6 +24,8 @@
 
     <TextView
         android:id="@+id/txtExploreAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="By Clara Luis"
         android:textSize="12sp"
         android:textColor="#777" />

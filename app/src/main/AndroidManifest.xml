@@ -11,24 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Projectseleranusantara">
-        <activity
-            android:name=".Home"
-            android:exported="false" />
+
+        <!-- Halaman Login -->
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="true" />
+
+        <!-- Halaman Register -->
         <activity
             android:name=".Register"
-            android:exported="false" /> <!-- Halaman Welcome jadi tampilan awal -->
-        <activity android:name=".WelcomeActivity"
+            android:exported="true" />
+
+        <!-- Halaman Welcome (halaman pertama aplikasi) -->
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Halaman utama (setelah Welcome) -->
-        <activity android:name=".MainActivity" />
+        </activity>
+
+        <!-- Halaman Utama setelah Login -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

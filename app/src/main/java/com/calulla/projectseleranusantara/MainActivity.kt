@@ -15,18 +15,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val popularList = listOf(
-            Recipe(R.drawable.recipe1, "Indonesian chicken burger", "By Adrianne Curl"),
-            Recipe(R.drawable.recipe2, "Home made cute pancake", "By James Woklen"),
+            Recipe(R.drawable.nasi_kuning, "Indonesian chicken burger", "By Adrianne Curl"),
+            Recipe(R.drawable.nasi_kuning, "Home made cute pancake", "By James Woklen"),
         )
 
         val newList = listOf(
-            Recipe(R.drawable.recipe1, "Indonesian chicken burger", "By Adrianne Curl"),
-            Recipe(R.drawable.recipe2, "Home made cute pancake", "By James Woklen"),
+            Recipe(R.drawable.nasi_kuning, "Indonesian chicken burger", "By Adrianne Curl"),
+            Recipe(R.drawable.nasi_kuning, "Home made cute pancake", "By James Woklen"),
         )
 
         val exploreList = listOf(
-            Recipe(R.drawable.big1, "Traditional spare ribs baked", "By Clara Luis"),
-            Recipe(R.drawable.big2, "Spicy fried rice chicken bali", "By Mega Haru"),
+            Recipe(R.drawable.nasi_kuning, "Traditional spare ribs baked", "By Clara Luis"),
+            Recipe(R.drawable.nasi_kuning, "Spicy fried rice chicken bali", "By Mega Haru"),
         )
 
         // Popular

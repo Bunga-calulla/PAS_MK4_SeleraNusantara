@@ -19,6 +19,7 @@ class Register : AppCompatActivity() {
 
         btnSignUp.setOnClickListener {
             startActivity(Intent(this, Login::class.java))
+            finish()
         }
     }
 }

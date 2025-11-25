@@ -66,7 +66,9 @@
                 android:text="Popular recipe"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopular"
@@ -79,7 +81,9 @@
                 android:text="New recipe"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNew"
@@ -92,7 +96,9 @@
                 android:text="Explore recipe"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvExplore"
@@ -100,6 +106,7 @@
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
                 android:layout_marginTop="10dp" />
+
 
         </LinearLayout>
     </ScrollView>

@@ -82,16 +82,38 @@
                     android:inputType="textPassword"
                     android:layout_marginBottom="8dp"/>
 
-                <!-- Forgot Password -->
-                <TextView
-                    android:id="@+id/forgotPassword"
+                <!-- Forgot + Don't have account (1 BARIS) -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forgot Password?"
-                    android:textColor="#555"
-                    android:textSize="12sp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="16dp">
+
+
+                    <TextView
+                        android:id="@+id/tvSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="You don't have an account?"
+                        android:textColor="#555"
+                        android:textStyle="bold"
+                        android:textSize="12sp"/>
+
+
+                    <TextView
+                        android:id="@+id/forgotPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="  Forgot Password?"
+                        android:textColor="#555"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+
+
 
                 <!-- Sign In -->
                 <Button

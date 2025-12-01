@@ -11,7 +11,8 @@
         android:layout_height="120dp"
         android:scaleType="centerCrop"
         android:src="@drawable/nasi_kuning"
-        android:background="@drawable/rounded_img" />
+        android:background="@drawable/rounded_img"
+        android:clipToOutline="true"/>
 
     <TextView
         android:id="@+id/txtTitle"

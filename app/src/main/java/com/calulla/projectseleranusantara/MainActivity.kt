@@ -1,5 +1,6 @@
 package com.calulla.projectseleranusantara
 
+import Recipe
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,19 +16,110 @@ class MainActivity : AppCompatActivity() {
            setContentView(R.layout.activity_main)
 
         val popularList = listOf(
-            Recipe(R.drawable.nasi_kuning, "Indonesian chicken burger", "By Adrianne Curl"),
-            Recipe(R.drawable.nasi_kuning, "Home made cute pancake", "By James Woklen"),
+            Recipe(
+                image = R.drawable.burger,
+                title = "Chicken Burger",
+                author = "Albert",
+                creatorAvatar = R.drawable.avatar,
+                description = "Burger ayam crispy dengan saus BBQ spesial.",
+                ingredients = listOf(
+                    "Roti burger",
+                    "Daging ayam crispy",
+                    "Selada",
+                    "Tomat",
+                    "Saus BBQ"
+                ),
+                username = "@albert99",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                image = R.drawable.pancake,
+                title = "Cute Pancake",
+                author = "Sheila",
+                creatorAvatar = R.drawable.avatar,
+                description = "Pancake lembut dengan topping buah segar.",
+                ingredients = listOf("Tepung", "Susu", "Telur", "Gula", "Madu"),
+                username = "@sheilafoodie",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                image = R.drawable.kentaki,
+                title = "Crispy Fried Chicken",
+                author = "James Woklen",
+                creatorAvatar = R.drawable.avatar,
+                description = "Ayam goreng crispy ala Kentucky dengan bumbu rahasia.",
+                ingredients = listOf("Ayam", "Tepung", "Lada", "Garam", "Telur"),
+                username = "@jameswk",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            )
         )
+
 
         val newList = listOf(
-            Recipe(R.drawable.nasi_kuning, "Indonesian chicken burger", "By Adrianne Curl"),
-            Recipe(R.drawable.nasi_kuning, "Home made cute pancake", "By James Woklen"),
+            Recipe(
+                R.drawable.sotoayam,
+                "Soto Ayam",
+                "Adrianne Curl",
+                R.drawable.avatar,
+                "Soto ayam hangat dengan kuah kuning khas.",
+                listOf("Ayam", "Soun", "Telur", "Daun bawang"),
+                username = "@adriannec",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                R.drawable.nasi_kuning,
+                "Nasi Kuning",
+                "Budi",
+                R.drawable.avatar,
+                "Nasi kuning gurih dengan lauk komplet.",
+                listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
+                username = "@budicook",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                R.drawable.lontong,
+                "Lontong Sayur",
+                "Dimas",
+                R.drawable.avatar,
+                "Lontong dengan kuah santan gurih dan rempah.",
+                listOf("Lontong", "Ayam", "Santan", "Sayur labu"),
+                username = "@dimaschef",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            )
         )
 
+
         val exploreList = listOf(
-            Recipe(R.drawable.nasi_kuning, "Traditional spare ribs baked", "By Clara Luis"),
-            Recipe(R.drawable.nasi_kuning, "Spicy fried rice chicken bali", "By Mega Haru"),
+            Recipe(
+                R.drawable.ribeye,
+                "Traditional spare ribs baked",
+                "Clara Luis",
+                R.drawable.avatar,
+                "Spare ribs panggang dengan bumbu tradisional.",
+                listOf("Daging ribs", "Lada", "Garam", "Madu"),
+                username = "@claraluis",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                R.drawable.nasi_kuning,
+                "Spicy fried rice chicken bali",
+                "Mega Haru",
+                R.drawable.avatar,
+                "Nasi goreng pedas khas Bali.",
+                listOf("Nasi", "Ayam", "Cabe", "Kecap"),
+                username = "@megaharu",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            )
         )
+
 
         // Popular
         findViewById<RecyclerView>(R.id.rvPopular).apply {

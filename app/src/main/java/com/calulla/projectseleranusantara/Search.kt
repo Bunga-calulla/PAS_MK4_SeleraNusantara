@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-// TAMBAH: Import SavedActivity
 import com.calulla.projectseleranusantara.SavedActivity
 
 class Search : AppCompatActivity() {

@@ -1,0 +1,162 @@
+package com.calulla.projectseleranusantara
+
+import Recipe
+import android.content.Intent
+import android.graphics.Color
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+// TAMBAH: Import SavedActivity
+import com.calulla.projectseleranusantara.SavedActivity
+
+class Search : AppCompatActivity() {
+
+    // 🚨 PERBAIKAN 1: Deklarasi Variabel Kelas (agar tidak Unresolved Reference)
+    private lateinit var adapter: RecipeVerticalAdapter
+    private lateinit var edtSearch: EditText
+    private lateinit var rvSearchResult: RecyclerView
+
+    // Gunakan 'lateinit' untuk List
+    private lateinit var originalList: MutableList<Recipe>
+    private lateinit var filteredList: MutableList<Recipe>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_search)
+
+        // NAVBAR ----
+        val navHome = findViewById<LinearLayout>(R.id.navHome)
+        val navSearch = findViewById<LinearLayout>(R.id.navSearch)
+        val navSaved = findViewById<LinearLayout>(R.id.navSaved)
+
+        val iconHome = findViewById<ImageView>(R.id.iconHome)
+        val iconSearch = findViewById<ImageView>(R.id.iconSearch)
+        val iconSaved = findViewById<ImageView>(R.id.iconSaved)
+
+        val textHome = findViewById<TextView>(R.id.textHome)
+        val textSearch = findViewById<TextView>(R.id.textSearch)
+        val textSaved = findViewById<TextView>(R.id.textSaved)
+
+        iconHome.setColorFilter(Color.parseColor("#C4C4C4"))
+        textHome.setTextColor(Color.parseColor("#C4C4C4"))
+
+        iconSearch.setColorFilter(Color.parseColor("#FFA200"))
+        textSearch.setTextColor(Color.parseColor("#FFA200"))
+
+        iconSaved.setColorFilter(Color.parseColor("#C4C4C4"))
+        textSaved.setTextColor(Color.parseColor("#C4C4C4"))
+
+        navHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(0, 0)
+            finish()
+        }
+
+        navSaved.setOnClickListener {
+            startActivity(Intent(this, SavedActivity::class.java))
+            overridePendingTransition(0, 0)
+            finish()
+        }
+
+        // SEARCH UI ----
+        // 🚨 PERBAIKAN 2: Gunakan variabel anggota kelas yang sudah dideklarasikan
+        edtSearch = findViewById(R.id.edtSearch)
+        rvSearchResult = findViewById(R.id.rvSearchResult)
+
+        // ----------------------------------------
+        // 🔍 --- DATA INITIALIZATION ---
+        // ----------------------------------------
+
+        // 🚨 PERBAIKAN 3: Memenuhi semua parameter (9 parameter) yang dibutuhkan oleh Recipe
+        originalList = mutableListOf(
+            Recipe(
+                image = R.drawable.burger,
+                title = "Chicken Burger",
+                author = "Albert",
+                creatorAvatar = R.drawable.avatar, // Diberi nilai default
+                description = "Burger ayam crispy dengan saus BBQ spesial.", // Diberi nilai default
+                ingredients = listOf("Roti burger", "Daging ayam crispy"), // Diberi nilai default
+                username = "@albert99", // Diberi nilai default
+                rating = 4.7, // Diberi nilai default
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4" // Diberi nilai default
+            ),
+            Recipe(
+                image = R.drawable.kentaki,
+                title = "Crispy Fried Chicken",
+                author = "James Woklen",
+                creatorAvatar = R.drawable.avatar,
+                description = "Ayam goreng crispy ala Kentucky.",
+                ingredients = listOf("Ayam", "Tepung", "Bumbu"),
+                username = "@jameswk",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=..."
+            ),
+            Recipe(
+                image = R.drawable.lontong,
+                title = "Lontong Sayur",
+                author = "By Chef C",
+                creatorAvatar = R.drawable.avatar,
+                description = "Lontong kuah santan gurih.",
+                ingredients = listOf("Lontong", "Sayur", "Santan"),
+                username = "@chefC",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=..."
+            ),
+            Recipe(
+                image = R.drawable.pancake,
+                title = "Cute Pancake",
+                author = "Dimas",
+                creatorAvatar = R.drawable.avatar,
+                description = "Pancake lembut dengan topping buah.",
+                ingredients = listOf("Tepung", "Susu", "Telur"),
+                username = "@dimaschef",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=..."
+            )
+        )
+
+        filteredList = originalList.toMutableList()
+
+        // INISIALISASI ADAPTER DAN RV (Hanya lakukan sekali)
+        adapter = RecipeVerticalAdapter(filteredList)
+        rvSearchResult.layoutManager = LinearLayoutManager(this)
+        rvSearchResult.adapter = adapter
+
+        // HAPUS addTextChangedListener LAMBDA YANG SALAH
+
+        // Event ketika mengetik (Sudah benar)
+        edtSearch.addTextChangedListener(object : TextWatcher { // Ganti edt menjadi edtSearch
+            override fun afterTextChanged(s: Editable?) {}
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filterList(s.toString())
+            }
+        })
+    }
+
+    private fun filterList(query: String) {
+        filteredList.clear()
+
+        if (query.isEmpty()) {
+            filteredList.addAll(originalList)
+        } else {
+            filteredList.addAll(
+                originalList.filter {
+                    // FIX LOGIKA: Menggunakan it.title untuk pencarian
+                    it.title.contains(query, ignoreCase = true)
+                }
+            )
+        }
+
+        adapter.notifyDataSetChanged()
+    }
+}

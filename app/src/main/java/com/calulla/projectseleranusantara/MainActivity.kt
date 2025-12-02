@@ -1,7 +1,9 @@
 package com.calulla.projectseleranusantara
 
 import Recipe
+import android.content.Intent // DITAMBAHKAN: Untuk berpindah Activity
 import android.os.Bundle
+import android.widget.LinearLayout // DITAMBAHKAN: Untuk mengakses elemen navigasi
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-           setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         val popularList = listOf(
             Recipe(
@@ -138,5 +140,33 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = RecipeVerticalAdapter(exploreList)
         }
+
+        // ----------------------------------------
+        // 🚀 LOGIKA NAVIGASI BOTTOM BAR (DITAMBAHKAN)
+        // ----------------------------------------
+
+        // 1. Identifikasi tombol Search (LinearLayout) dari layout (asumsi ID: navSearch)
+        val navSearch = findViewById<LinearLayout>(R.id.navSearch)
+
+        // 2. Tambahkan Click Listener
+        navSearch.setOnClickListener {
+            // Membuat Intent untuk berpindah dari MainActivity ke Search Activity
+            startActivity(Intent(this, Search::class.java))
+            // Opsional: Menonaktifkan animasi transisi (Seperti yang Anda lakukan di Search.kt)
+            overridePendingTransition(0, 0)
+            // Opsional: Jika Anda tidak ingin kembali ke MainActivity setelah pindah
+            // finish()
+        }
+
+        // Anda mungkin ingin menambahkan navigasi untuk navSaved dan navHome juga di sini
+        // Misalnya:
+        /*
+        val navSaved = findViewById<LinearLayout>(R.id.navSaved)
+        navSaved.setOnClickListener {
+            startActivity(Intent(this, SavedActivity::class.java))
+            overridePendingTransition(0, 0)
+        }
+        */
+
     }
 }

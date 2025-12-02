@@ -119,6 +119,28 @@ class Search : AppCompatActivity() {
                 username = "@dimaschef",
                 rating = 4.7,
                 youtubeLink = "https://www.youtube.com/watch?v=..."
+            ),
+            Recipe(
+                R.drawable.sotoayam,
+                "Soto Ayam",
+                "Adrianne Curl",
+                R.drawable.avatar,
+                "Soto ayam hangat dengan kuah kuning khas.",
+                listOf("Ayam", "Soun", "Telur", "Daun bawang"),
+                username = "@adriannec",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+            ),
+            Recipe(
+                R.drawable.nasi_kuning,
+                "Nasi Kuning",
+                "Budi",
+                R.drawable.avatar,
+                "Nasi kuning gurih dengan lauk komplet.",
+                listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
+                username = "@budicook",
+                rating = 4.7,
+                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
             )
         )
 

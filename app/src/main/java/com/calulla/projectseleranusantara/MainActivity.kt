@@ -142,31 +142,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ----------------------------------------
-        // 🚀 LOGIKA NAVIGASI BOTTOM BAR (DITAMBAHKAN)
+        // LOGIKA NAVIGASI BOTTOM BAR
         // ----------------------------------------
 
-        // 1. Identifikasi tombol Search (LinearLayout) dari layout (asumsi ID: navSearch)
-        val navSearch = findViewById<LinearLayout>(R.id.navSearch)
 
-        // 2. Tambahkan Click Listener
+        val navSearch = findViewById<LinearLayout>(R.id.navSearch)
         navSearch.setOnClickListener {
-            // Membuat Intent untuk berpindah dari MainActivity ke Search Activity
             startActivity(Intent(this, Search::class.java))
-            // Opsional: Menonaktifkan animasi transisi (Seperti yang Anda lakukan di Search.kt)
             overridePendingTransition(0, 0)
-            // Opsional: Jika Anda tidak ingin kembali ke MainActivity setelah pindah
-            // finish()
         }
 
-        // Anda mungkin ingin menambahkan navigasi untuk navSaved dan navHome juga di sini
-        // Misalnya:
-        /*
         val navSaved = findViewById<LinearLayout>(R.id.navSaved)
         navSaved.setOnClickListener {
             startActivity(Intent(this, SavedActivity::class.java))
             overridePendingTransition(0, 0)
         }
-        */
 
     }
 }

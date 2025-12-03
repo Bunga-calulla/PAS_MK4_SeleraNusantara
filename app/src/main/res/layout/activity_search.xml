@@ -3,47 +3,179 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FAFAFA">
 
+    <!-- HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find Your Favorite Food 🍜"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search delicious Indonesian recipes"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+
+    <!-- SEARCH BOX -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:background="@drawable/input_bg"
+        android:elevation="3dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:src="@drawable/ic_search"
-            app:tint="#FFA200" />
+            app:tint="#FFA200"/>
 
         <EditText
             android:id="@+id/edtSearch"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Search recipes..."
-            android:padding="8dp"
-            android:background="@drawable/input_bg"
-            android:textColor="@android:color/black"/> ```
+            android:hint="Search recipes, ingredients..."
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:textColorHint="#999999"
+            android:background="@android:color/transparent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:gravity="center_vertical"/>
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_filter"
+            app:tint="#FFA200"/>
     </LinearLayout>
 
+    <!-- TRENDING SEARCH -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending Search 🔥"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seblak"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rendang"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mie Aceh"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bakso"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/input_bg"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- RESULT TITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Popular Recipes"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:paddingHorizontal="20dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- RECYCLER VIEW -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchResult"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:paddingHorizontal="16dp"
+        android:clipToPadding="false"/>
 
+    <!-- BOTTOM NAVIGATION -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:elevation="10dp">
 
         <LinearLayout
             android:id="@+id/navHome"

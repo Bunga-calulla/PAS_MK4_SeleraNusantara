@@ -1,147 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FAFAFA">
 
+    <!-- SCROLL CONTENT -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingBottom="20dp">
 
-            <!-- Header -->
+            <!-- HEADER -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingTop="30dp">
 
                 <ImageView
                     android:id="@+id/imgProfile"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/avatar"
-                    android:layout_marginRight="12dp" />
+                    android:background="@drawable/rounded_img"
+                    android:clipToOutline="true"
+                    android:contentDescription="Profile" />
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="14dp">
 
                     <TextView
-                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Welcome 👋" />
+                        android:text="Welcome Back 👋"
+                        android:textSize="13sp"
+                        android:textColor="#777777"/>
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Tasya Aulianza"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
-                <ImageView
-                    android:id="@+id/imgNotif"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/ic_notification" />
+                <FrameLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/input_bg"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/imgNotif"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_notification"
+                        app:tint="#FFA200"
+                        android:contentDescription="Notification"/>
+                </FrameLayout>
 
             </LinearLayout>
 
-            <!-- Popular Recipe -->
+            <!-- SEARCH -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:background="@drawable/input_bg"
+                android:elevation="2dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_search"
+                    app:tint="#FFA200"/>
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Search Indonesian recipes..."
+                    android:textColorHint="#999999"
+                    android:background="@android:color/transparent"
+                    android:paddingStart="12dp"
+                    android:textSize="15sp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_filter"
+                    app:tint="#FFA200"/>
+            </LinearLayout>
+
+            <!-- BANNER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="22dp"
+                android:background="#FFA200"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today's Special 🍜"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="Discover delicious traditional Indonesian food"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore Now →"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="16dp"/>
+            </LinearLayout>
+
+            <!-- CATEGORY -->
             <TextView
-                android:text="Popular recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textColor="#000"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingStart="20dp"
+                android:layout_marginTop="12dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🍛 Traditional"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF"
+                        android:background="#FFA200"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginEnd="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌶️ Spicy"
+                        android:textStyle="bold"
+                        android:textColor="#FFA200"
+                        android:background="@drawable/input_bg"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginEnd="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🍜 Soup"
+                        android:textStyle="bold"
+                        android:textColor="#FFA200"
+                        android:background="@drawable/input_bg"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="10dp"
+                        android:layout_marginEnd="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🍰 Dessert"
+                        android:textStyle="bold"
+                        android:textColor="#FFA200"
+                        android:background="@drawable/input_bg"
+                        android:paddingHorizontal="18dp"
+                        android:paddingVertical="10dp"/>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <!-- POPULAR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:text="Popular Recipe 🔥"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See All"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:paddingStart="10dp"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"/>
 
-            <!-- New Recipe -->
-            <TextView
-                android:text="New recipe"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!-- NEW -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:text="New Recipe ✨"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See All"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvNew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:paddingStart="10dp"
+                android:layout_marginTop="10dp"
+                android:nestedScrollingEnabled="false"/>
 
-            <!-- Explore -->
-            <TextView
-                android:text="Explore recipe"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <!-- EXPLORE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="20dp"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:text="Explore Recipes 🍴"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="More"
+                    android:textColor="#FFA200"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvExplore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:layout_marginTop="10dp" />
-
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
+
     </ScrollView>
 
-    <!-- Bottom Navigation -->
+    <!-- BOTTOM NAVIGATION -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="74dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:elevation="12dp">
 
-        <!-- HOME -->
+        <!-- HOME ACTIVE -->
         <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#FFF5E6">
 
             <ImageView
-                android:id="@+id/iconHome"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_home"
-                android:tint="#FFA200"/>
+                app:tint="#FFA200"/>
 
             <TextView
-                android:id="@+id/textHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
                 android:textColor="#FFA200"
+                android:textStyle="bold"
                 android:textSize="12sp"/>
         </LinearLayout>
 
@@ -155,14 +370,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iconSearch"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_search"
-                android:tint="#C4C4C4"/>
+                app:tint="#C4C4C4"/>
 
             <TextView
-                android:id="@+id/textSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search"
@@ -180,14 +393,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iconSaved"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_saved"
-                android:tint="#C4C4C4"/>
+                app:tint="#C4C4C4"/>
 
             <TextView
-                android:id="@+id/textSaved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saved"
@@ -196,6 +407,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

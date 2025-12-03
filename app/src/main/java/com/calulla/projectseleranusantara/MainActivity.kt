@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
                 ingredients = listOf("Tepung", "Susu", "Telur", "Gula", "Madu"),
                 username = "@sheilafoodie",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/SaKgKfAqzAs?si=FHiKSeVZPZgHKTCG"
             ),
             Recipe(
                 image = R.drawable.kentaki,
                 title = "Crispy Fried Chicken",
-                author = "James Woklen",
+                author = "Erin Gemini",
                 creatorAvatar = R.drawable.avatar,
                 description = "Ayam goreng crispy ala Kentucky dengan bumbu rahasia.",
                 ingredients = listOf("Ayam", "Tepung", "Lada", "Garam", "Telur"),
@@ -63,14 +63,14 @@ class MainActivity : AppCompatActivity() {
         val newList = listOf(
             Recipe(
                 R.drawable.sotoayam,
-                "Soto Ayam",
+                "Soto Ayam",    
                 "Adrianne Curl",
                 R.drawable.avatar,
                 "Soto ayam hangat dengan kuah kuning khas.",
                 listOf("Ayam", "Soun", "Telur", "Daun bawang"),
                 username = "@adriannec",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/pJ-PMDJ0x38?si=Q1NfLjV5qA9mzCaL"
             ),
             Recipe(
                 R.drawable.nasi_kuning,
@@ -81,18 +81,18 @@ class MainActivity : AppCompatActivity() {
                 listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
                 username = "@budicook",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
             ),
             Recipe(
                 R.drawable.lontong,
                 "Lontong Sayur",
-                "Dimas",
+                "Resep Wina",
                 R.drawable.avatar,
                 "Lontong dengan kuah santan gurih dan rempah.",
                 listOf("Lontong", "Ayam", "Santan", "Sayur labu"),
                 username = "@dimaschef",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/91T206VNMpk?si=dEobVdZ2U4T0QYbW"
             )
         )
 
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
                 listOf("Daging ribs", "Lada", "Garam", "Madu"),
                 username = "@claraluis",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/q0p8Nyag5dQ?si=DIPdq_HotMiGi0Y7"
             ),
             Recipe(
                 R.drawable.nasi_kuning,
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                 listOf("Nasi", "Ayam", "Cabe", "Kecap"),
                 username = "@megaharu",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
             )
         )
 

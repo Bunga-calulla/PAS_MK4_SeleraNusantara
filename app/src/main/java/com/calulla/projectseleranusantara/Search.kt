@@ -90,24 +90,24 @@ class Search : AppCompatActivity() {
             Recipe(
                 image = R.drawable.kentaki,
                 title = "Crispy Fried Chicken",
-                author = "James Woklen",
+                author = "Erin Gemini",
                 creatorAvatar = R.drawable.avatar,
                 description = "Ayam goreng crispy ala Kentucky.",
                 ingredients = listOf("Ayam", "Tepung", "Bumbu"),
                 username = "@jameswk",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=..."
+                youtubeLink = "https://youtu.be/h96RK21ovDU?si=5iV5-eCuZmBNcqCN"
             ),
             Recipe(
                 image = R.drawable.lontong,
                 title = "Lontong Sayur",
-                author = "By Chef C",
+                author = "Resep Wina",
                 creatorAvatar = R.drawable.avatar,
                 description = "Lontong kuah santan gurih.",
                 ingredients = listOf("Lontong", "Sayur", "Santan"),
                 username = "@chefC",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=..."
+                youtubeLink = "https://youtu.be/91T206VNMpk?si=dEobVdZ2U4T0QYbW"
             ),
             Recipe(
                 image = R.drawable.pancake,
@@ -118,7 +118,7 @@ class Search : AppCompatActivity() {
                 ingredients = listOf("Tepung", "Susu", "Telur"),
                 username = "@dimaschef",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=..."
+                youtubeLink = "https://youtu.be/SaKgKfAqzAs?si=FHiKSeVZPZgHKTCG"
             ),
             Recipe(
                 R.drawable.sotoayam,
@@ -129,7 +129,7 @@ class Search : AppCompatActivity() {
                 listOf("Ayam", "Soun", "Telur", "Daun bawang"),
                 username = "@adriannec",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/pJ-PMDJ0x38?si=Q1NfLjV5qA9mzCaL"
             ),
             Recipe(
                 R.drawable.nasi_kuning,
@@ -140,7 +140,18 @@ class Search : AppCompatActivity() {
                 listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
                 username = "@budicook",
                 rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
+                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
+            ),
+            Recipe(
+                R.drawable.ribeye,
+                "Traditional spare ribs baked",
+                "Clara Luis",
+                R.drawable.avatar,
+                "Spare ribs panggang dengan bumbu tradisional.",
+                listOf("Daging ribs", "Lada", "Garam", "Madu"),
+                username = "@claraluis",
+                rating = 4.7,
+                youtubeLink = "https://youtu.be/q0p8Nyag5dQ?si=DIPdq_HotMiGi0Y7"
             )
         )
 

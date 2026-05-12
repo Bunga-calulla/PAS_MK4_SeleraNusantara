@@ -17,110 +17,91 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Lapisan gelap di atas gambar -->
-
-    <!-- Tulisan: 100+ Premium recipes -->
-
-    <!-- Nama Aplikasi -->
-
-    <!-- Judul utama -->
-
-    <!-- Deskripsi -->
-
+    <!-- Overlay Gelap -->
     <View
         android:id="@+id/darkOverlay"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#66000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Premium -->
     <TextView
         android:id="@+id/tvPremium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
         android:layout_marginTop="28dp"
-        android:text="★ 100+ Premium recipes"
+        android:text="★ 100+ Resep Premium"
         android:textColor="#FFD700"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Tombol Start -->
-
+    <!-- Nama Aplikasi -->
     <TextView
         android:id="@+id/tvAppName"
-        android:layout_width="253dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="SatoeRasa"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#FFFFFF"
         android:textSize="47sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="@+id/bgImage"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.18" />
 
+    <!-- Judul -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Let's\nCooking"
+        android:text="Ayo\nMemasak"
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/bgImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="80dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.613" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
 
+    <!-- Deskripsi -->
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find best recipes for cooking"
+        android:text="Temukan resep terbaik untuk memasak"
         android:textColor="#DDDDDD"
         android:textSize="14sp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bgImage"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Tombol Mulai -->
     <Button
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#FF9800"
         android:paddingLeft="24dp"
         android:paddingTop="10dp"
         android:paddingRight="24dp"
         android:paddingBottom="10dp"
-        android:text="Start cooking →"
+        android:text="Mulai Memasak →"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/bgImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/tvDesc"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

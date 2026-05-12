@@ -21,7 +21,7 @@ class RecipeVerticalAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_recipe_vertical, parent, false)
+            .inflate(R.layout.item_recipe_minuman_nusantara, parent, false)
         return ViewHolder(v)
     }
 

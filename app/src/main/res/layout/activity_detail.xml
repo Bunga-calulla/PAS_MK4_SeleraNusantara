@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA">
 
-    <!-- SCROLL CONTENT -->
+    <!-- SCROLL -->
     <ScrollView
-        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -23,63 +22,60 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- FOOD IMAGE -->
+            <!-- HEADER GAMBAR -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="340dp">
+                android:layout_height="320dp">
 
                 <ImageView
                     android:id="@+id/ivFood"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/burger"/>
+                    android:src="@drawable/gudeg"/>
 
-                <!-- DARK OVERLAY -->
+                <!-- Overlay -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#40000000"/>
+                    android:background="#50000000"/>
 
-                <!-- TOP BUTTONS -->
+                <!-- TOP BUTTON -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:paddingHorizontal="16dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginTop="22dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="16dp">
 
-                    <!-- BACK BUTTON -->
+                    <!-- BACK -->
                     <ImageView
                         android:id="@+id/btnBack"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
+                        android:background="@drawable/rounded_back_icon"
                         android:padding="12dp"
                         android:src="@drawable/ic_arrow_back"
-                        android:background="@drawable/rounded_back_icon"
-                        android:layout_margin="16dp"
-                        android:elevation="6dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:contentDescription="Back"/>
+                        android:contentDescription="Kembali"/>
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"/>
 
-                    <!-- SAVE BUTTON -->
+                    <!-- FAVORITE -->
                     <ImageView
-                        android:id="@+id/btnSave"
+                        android:id="@+id/btnFavorite"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_saved"
                         android:background="@drawable/rounded_back_icon"
-                        app:tint="#FFA200"/>
+                        android:padding="12dp"
+                        android:src="@drawable/ic_star"
+                        app:tint="#FFD54F"
+                        android:contentDescription="Favorit"/>
                 </LinearLayout>
 
-                <!-- TITLE OVER IMAGE -->
+                <!-- JUDUL -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -91,17 +87,17 @@
                         android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cheese Burger Deluxe"
+                        android:text="Gudeg Yogyakarta"
                         android:textColor="#FFFFFF"
-                        android:textSize="28sp"
+                        android:textSize="30sp"
                         android:textStyle="bold"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="8dp">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="18dp"
@@ -110,50 +106,47 @@
                             app:tint="#FFD54F"/>
 
                         <TextView
-                            android:id="@+id/tvRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" 4.8 Rating"
+                            android:text=" 4.9 Penilaian"
                             android:textColor="#FFFFFF"
-                            android:textStyle="bold"
-                            android:textSize="14sp"/>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="   •   25 min"
+                            android:text="  •  25 Menit"
                             android:textColor="#EEEEEE"
-                            android:textSize="14sp"/>
+                            android:layout_marginStart="8dp"/>
                     </LinearLayout>
 
                 </LinearLayout>
 
             </FrameLayout>
 
-            <!-- CONTENT CARD -->
+            <!-- CONTENT -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_marginTop="-20dp"
                 android:background="#FFFFFF"
-                android:paddingTop="20dp"
-                android:layout_marginTop="-20dp">
+                android:orientation="vertical"
+                android:paddingTop="24dp">
 
-                <!-- CREATOR -->
+                <!-- PEMBUAT -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="20dp"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="20dp">
 
                     <ImageView
-                        android:id="@+id/ivCreator"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:src="@drawable/avatar"
-                        android:scaleType="centerCrop"
                         android:background="@drawable/rounded_img"
-                        android:clipToOutline="true"/>
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/avatar"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -163,166 +156,231 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvCreatorName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Chef Indonesia"
-                            android:textStyle="bold"
+                            android:text="Chef Nusantara"
+                            android:textColor="#000"
                             android:textSize="16sp"
-                            android:textColor="#000"/>
+                            android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/tvCreatorUsername"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="lulu"
+                            android:text="@lulu"
                             android:textColor="#888888"
                             android:textSize="13sp"/>
                     </LinearLayout>
 
+                    <!-- BUTTON YOUTUBE -->
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnWatch"
+                        android:id="@+id/btnYoutube"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:text="Watch ▶"
+                        android:backgroundTint="#FF0000"
+                        android:text="Tonton"
                         android:textAllCaps="false"
-                        android:textStyle="bold"
                         android:textColor="#FFFFFF"
-                        android:paddingHorizontal="18dp"
+                        android:textStyle="bold"
                         app:cornerRadius="14dp"
-                        android:backgroundTint="#FFA200"/>
+                        app:icon="@drawable/ic_youtube"
+                        app:iconTint="#FFFFFF"/>
                 </LinearLayout>
 
-                <!-- QUICK INFO -->
+                <!-- THUMBNAIL YOUTUBE -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="20dp"
-                    android:layout_marginTop="22dp">
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp">
 
-                    <!-- CALORIES -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/input_bg"
-                        android:layout_marginEnd="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📺 Video Tutorial"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🔥"
-                            android:textSize="20sp"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="14dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="320 Cal"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
+                        <!-- Thumbnail -->
+                        <ImageView
+                            android:id="@+id/imgYoutube"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/thumb_gudeg"
+                            android:background="@drawable/rounded_img"
+                            android:clipToOutline="true"/>
 
-                    <!-- TIME -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/input_bg"
-                        android:layout_marginHorizontal="4dp">
+                        <!-- Overlay -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#30000000"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="⏱️"
-                            android:textSize="20sp"/>
+                        <!-- Play Button -->
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_play_circle"
+                            app:tint="#FFFFFF"/>
+                    </FrameLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="25 Min"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cara Membuat Gudeg Jogja Asli"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_marginTop="10dp"/>
 
-                    <!-- SERVING -->
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="80dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="@drawable/input_bg"
-                        android:layout_marginStart="8dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🍽️"
-                            android:textSize="20sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2 Serve"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="YouTube • 120 ribu ditonton"
+                        android:textSize="13sp"
+                        android:textColor="#888888"/>
                 </LinearLayout>
 
-                <!-- DESCRIPTION -->
+                <!-- DESKRIPSI -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:text="Deskripsi"
                     android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:layout_marginTop="28dp"
                     android:paddingHorizontal="20dp"/>
 
                 <TextView
-                    android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="A delicious homemade burger with juicy beef, melted cheese, fresh vegetables, and special sauce. Perfect for lunch or dinner with family and friends."
-                    android:textColor="#777777"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="4dp"
                     android:paddingHorizontal="20dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:text="Gudeg merupakan makanan khas Yogyakarta yang dibuat dari nangka muda dan dimasak dengan santan serta rempah pilihan. Gudeg memiliki rasa manis dan gurih yang khas, biasanya disajikan bersama nasi, ayam, telur, tahu, dan sambal krecek."
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp"/>
 
-                <!-- INGREDIENTS -->
+                <!-- ALAT -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="28dp"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="20dp"
-                    android:layout_marginTop="28dp">
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Ingredients"
-                        android:textStyle="bold"
+                        android:text="Alat"
+                        android:textColor="#000"
                         android:textSize="20sp"
-                        android:textColor="#000"/>
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5 Items"
+                        android:text="3 Alat"
                         android:textColor="#FFA200"
                         android:textStyle="bold"/>
                 </LinearLayout>
 
-                <!-- INGREDIENTS CARD -->
+                <!-- LIST ALAT -->
                 <LinearLayout
-                    android:id="@+id/ingredientsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="14dp">
+
+                    <!-- ITEM -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/input_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:text="🍲"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Panci Besar"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/input_bg"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:text="🥄"
+                            android:textSize="22sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sendok Kayu"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- BAHAN -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bahan"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Bahan"
+                        android:textColor="#FFA200"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- LIST BAHAN -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -334,40 +392,38 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/input_bg"
-                        android:paddingHorizontal="16dp"
-                        android:layout_marginBottom="12dp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp">
 
                         <TextView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:gravity="center"
-                            android:text="🥩"
+                            android:text="🥥"
                             android:textSize="22sp"/>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:orientation="vertical"
                             android:layout_marginStart="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Beef Meat"
+                                android:text="Santan"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="250 gram"
-                                android:textSize="12sp"
-                                android:textColor="#888"/>
+                                android:text="500 ml"
+                                android:textColor="#888888"
+                                android:textSize="12sp"/>
                         </LinearLayout>
-
                     </LinearLayout>
 
                 </LinearLayout>

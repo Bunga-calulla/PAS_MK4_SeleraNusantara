@@ -20,123 +20,116 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Header Image -->
+            <!-- Gambar Header -->
             <ImageView
                 android:id="@+id/headerImage"
                 android:layout_width="0dp"
                 android:layout_height="220dp"
-                android:src="@drawable/bg_register"
                 android:scaleType="centerCrop"
+                android:src="@drawable/bg_register"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <!-- White Card -->
+            <!-- Card Form -->
             <LinearLayout
                 android:id="@+id/formCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rounded_card"
-                android:padding="24dp"
-                android:layout_marginTop="-50dp"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="-50dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="24dp"
                 app:layout_constraintTop_toBottomOf="@id/headerImage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- Title -->
+                <!-- Judul -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="LOGIN"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp"
                     android:gravity="center"
+                    android:text="MASUK"
                     android:textColor="#000000"
-                    android:layout_marginBottom="24dp"/>
-
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <!-- Username -->
                 <EditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="username"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/input_bg"
+                    android:hint="Nama Pengguna"
                     android:paddingHorizontal="16dp"
-                    android:textColorHint="#555"
                     android:textColor="#000"
-                    android:layout_marginBottom="12dp"/>
+                    android:textColorHint="#555" />
 
                 <!-- Password -->
                 <EditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:hint="password"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/input_bg"
-                    android:paddingHorizontal="16dp"
-                    android:textColorHint="#555"
-                    android:textColor="#000"
+                    android:hint="Kata Sandi"
                     android:inputType="textPassword"
-                    android:layout_marginBottom="8dp"/>
+                    android:paddingHorizontal="16dp"
+                    android:textColor="#000"
+                    android:textColorHint="#555" />
 
-                <!-- Forgot + Don't have account (1 BARIS) -->
+                <!-- Daftar + Lupa Password -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="16dp">
-
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/tvSignUp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You don't have an account?"
+                        android:text="Belum punya akun?"
                         android:textColor="#555"
-                        android:textStyle="bold"
-                        android:textSize="12sp"/>
-
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/forgotPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="  Forgot Password?"
+                        android:text="  Lupa Kata Sandi?"
                         android:textColor="#555"
                         android:textSize="12sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-
-
-
-                <!-- Sign In -->
+                <!-- Tombol Masuk -->
                 <Button
                     android:id="@+id/btnSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:text="Sign In"
+                    android:layout_marginBottom="20dp"
                     android:backgroundTint="#000000"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
                     android:fontFamily="sans-serif-medium"
-                    android:layout_marginBottom="20dp"/>
+                    android:text="Masuk"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
 
-
-                <!-- Continue with Google -->
+                <!-- Login dengan Google -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginBottom="12dp"
                     android:background="@drawable/social_btn_bg"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:paddingHorizontal="16dp"
-                    android:layout_marginBottom="12dp">
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
 
                     <ImageView
                         android:layout_width="24dp"
@@ -146,19 +139,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Continue With Google"
-                        android:textSize="14sp"
-                        android:textColor="#000"/>
+                        android:text=" Lanjutkan dengan Google"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
-
-                <!-- Continue with Facebook -->
+                <!-- Login dengan Facebook -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/social_btn_bg"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:paddingHorizontal="16dp">
 
                     <ImageView
@@ -169,9 +161,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Continue With Facebook"
-                        android:textSize="14sp"
-                        android:textColor="#000"/>
+                        android:text=" Lanjutkan dengan Facebook"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>

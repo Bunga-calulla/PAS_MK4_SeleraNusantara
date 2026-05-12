@@ -9,9 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecipeHorizontalAdapter(
+class RecipeminumanusantaraAdapter(
     private val items: List<Recipe>
-) : RecyclerView.Adapter<RecipeHorizontalAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecipeminumanusantaraAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val img: ImageView = view.findViewById(R.id.imgRecipe)
@@ -21,7 +21,7 @@ class RecipeHorizontalAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_recipe_horizontal, parent, false)
+            .inflate(R.layout.item_recipe_makanan_nusantara, parent, false)
         return ViewHolder(v)
     }
 

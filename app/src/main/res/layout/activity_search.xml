@@ -93,57 +93,7 @@
         android:paddingStart="20dp"
         android:scrollbars="none"
         android:layout_marginBottom="16dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:background="#FF9800"
-                android:gravity="center"
-                android:paddingHorizontal="18dp"
-                android:text="🍛 Makanan"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/input_bg"
-                android:gravity="center"
-                android:paddingHorizontal="18dp"
-                android:text="🍹 Minuman"
-                android:textColor="#FF9800"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/input_bg"
-                android:gravity="center"
-                android:paddingHorizontal="18dp"
-                android:text="🌶 Pedas"
-                android:textColor="#FF9800"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@drawable/input_bg"
-                android:gravity="center"
-                android:paddingHorizontal="18dp"
-                android:text="🍰 Pencuci Mulut"
-                android:textColor="#FF9800"
-                android:textStyle="bold"/>
-        </LinearLayout>
-    </HorizontalScrollView>
-
+        
     <!-- TRENDING -->
     <LinearLayout
         android:layout_width="match_parent"

@@ -10,171 +10,137 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="22dp"
-        android:paddingTop="34dp"
-        android:paddingBottom="18dp">
-
-        <TextView
-            android:id="@+id/tvSavedTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Saved Recipes ❤"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:textColor="@android:color/black"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Keep your favorite Indonesian foods here"
-            android:textSize="14sp"
-            android:textColor="#8A8A8A"
-            android:layout_marginTop="6dp"/>
-    </LinearLayout>
-
-    <!-- SEARCH -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="18dp"
-        android:background="@drawable/input_bg"
-        android:elevation="3dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="16dp">
 
+        <!-- BUTTON KEMBALI -->
         <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:src="@drawable/ic_search"
-            app:tint="#FFA200"/>
-
-        <EditText
-            android:id="@+id/etSearchSaved"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:hint="Search recipes..."
-            android:textColor="#000000"
-            android:textColorHint="#A0A0A0"
-            android:textSize="15sp"
-            android:background="@android:color/transparent"
-            android:paddingHorizontal="12dp"
-            android:gravity="center_vertical"/>
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_search"
-            app:tint="#FFA200"/>
-    </LinearLayout>
-
-    <!-- TRENDING BANNER -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#FFA200"
-        android:orientation="vertical"
-        android:padding="22dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🔥 Trending Recipes"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:text="Discover delicious Nusantara foods loved by everyone"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Explore Now →"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginTop="18dp"/>
-    </LinearLayout>
-
-    <!-- CATEGORY -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:paddingStart="20dp"
-        android:layout_marginBottom="18dp">
+            android:id="@+id/btnBack"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/ic_arrow_back"
+            android:padding="10dp"
+            android:background="@drawable/input_bg"
+            android:contentDescription="Kembali"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
 
-            <!-- ACTIVE -->
-
+            <TextView
+                android:id="@+id/tvSavedTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resep Favorit ❤️"
+                android:textStyle="bold"
+                android:textSize="26sp"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="All"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:background="#FFA200"
-                android:paddingHorizontal="22dp"
-                android:paddingVertical="10dp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:gravity="center"
-                android:text="Spicy"
-                android:textStyle="bold"
-                android:textColor="#FFA200"
-                android:textSize="14sp"
-                android:background="@drawable/input_bg"
-                android:paddingHorizontal="22dp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:gravity="center"
-                android:text="Soup"
-                android:textStyle="bold"
-                android:textColor="#FFA200"
-                android:textSize="14sp"
-                android:background="@drawable/input_bg"
-                android:paddingHorizontal="22dp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="44dp"
-                android:gravity="center"
-                android:text="Dessert"
-                android:textStyle="bold"
-                android:textColor="#FFA200"
-                android:textSize="14sp"
-                android:background="@drawable/input_bg"
-                android:paddingHorizontal="22dp"/>
+                android:text="Semua resep yang kamu simpan ada di sini"
+                android:textSize="13sp"
+                android:textColor="#8A8A8A"
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
-    </HorizontalScrollView>
+    </LinearLayout>
 
-    <!-- INFO -->
+    <!-- SEARCH -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="#FFA200"/>
+
+            <EditText
+                android:id="@+id/etSearchSaved"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:hint="Cari resep favorit..."
+                android:textColor="#000000"
+                android:textColorHint="#A0A0A0"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:paddingHorizontal="12dp"
+                android:inputType="text"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- BANNER -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFA200"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✨ Koleksi Favorit"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:alpha="0.9"/>
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Nikmati kembali resep nusantara favoritmu kapan saja"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"/>
+
+            <Button
+                android:id="@+id/btnExplore"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_marginTop="14dp"
+                android:text="Lihat Semua"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#FFA200"
+                android:backgroundTint="#FFFFFF"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- JUMLAH RESEP -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -187,7 +153,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="12 Recipes Saved"
+            android:text="12 Resep Tersimpan"
             android:textStyle="bold"
             android:textColor="#111111"
             android:textSize="18sp"/>
@@ -195,31 +161,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Newest"
+            android:text="Terbaru"
             android:textColor="#FFA200"
             android:textStyle="bold"
             android:textSize="14sp"/>
     </LinearLayout>
 
-    <!-- RECIPE LIST -->
+    <!-- RECYCLERVIEW -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSaved"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingHorizontal="14dp"
-        android:clipToPadding="false"
-        android:nestedScrollingEnabled="true"/>
+        android:clipToPadding="false"/>
 
     <!-- BOTTOM NAV -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="72dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
         android:gravity="center"
-        android:elevation="14dp">
+        android:elevation="16dp">
 
         <!-- HOME -->
         <LinearLayout
@@ -228,9 +193,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="24dp"
@@ -241,9 +204,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Beranda"
                 android:textColor="#B5B5B5"
-                android:textSize="12sp"/>
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
         <!-- SEARCH -->
@@ -253,25 +217,24 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_search"
                 app:tint="#B5B5B5"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Search"
+                android:text="Cari"
                 android:textColor="#B5B5B5"
-                android:textSize="12sp"/>
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
-        <!-- SAVED ACTIVE -->
+        <!-- FAVORIT -->
         <LinearLayout
             android:id="@+id/navSaved"
             android:layout_width="0dp"
@@ -279,23 +242,22 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="#FFF4E5"
-            android:clickable="true"
-            android:focusable="true">
+            android:background="#FFF4E5">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_saved"
                 app:tint="#FFA200"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Saved"
+                android:text="Favorit"
                 android:textColor="#FFA200"
+                android:textSize="11sp"
                 android:textStyle="bold"
-                android:textSize="12sp"/>
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
     </LinearLayout>

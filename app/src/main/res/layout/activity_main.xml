@@ -52,6 +52,7 @@
                         android:textSize="13sp" />
 
                     <TextView
+                        android:id="@+id/tvUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tasya Aulianza"
@@ -65,26 +66,29 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <!-- FAVORITE BUTTON -->
+                <!-- LOGOUT BUTTON -->
                 <FrameLayout
+                    android:id="@+id/btnLogout"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/input_bg"
                     android:padding="12dp">
 
                     <ImageView
-                        android:id="@+id/imgFavorite"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:contentDescription="Favorit"
-                        android:src="@android:drawable/btn_star_big_on"
-                        app:tint="#FFB300" />
+                        android:contentDescription="Logout"
+                        android:src="@android:drawable/ic_lock_power_off"
+                        app:tint="#FF3B30" />
                 </FrameLayout>
+
 
             </LinearLayout>
 
             <!-- SEARCH -->
+            <!-- SEARCH BAR DUMMY -->
             <LinearLayout
+                android:id="@+id/searchBarContainer"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:layout_marginHorizontal="20dp"
@@ -93,7 +97,10 @@
                 android:elevation="2dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingHorizontal="16dp">
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:descendantFocusability="blocksDescendants">
 
                 <ImageView
                     android:layout_width="22dp"
@@ -101,15 +108,13 @@
                     android:src="@drawable/ic_search"
                     app:tint="#FF9800" />
 
-                <EditText
+                <TextView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:hint="Cari makanan khas Indonesia..."
+                    android:text="Cari makanan khas Indonesia..."
                     android:paddingStart="12dp"
-                    android:textColor="#111111"
-                    android:textColorHint="#999999"
+                    android:textColor="#999999"
                     android:textSize="15sp" />
 
                 <ImageView
@@ -125,7 +130,7 @@
                 android:layout_height="180dp"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="22dp"
-                android:background="#FF9800"
+                android:background="@drawable/bg_banner"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="22dp">
@@ -151,8 +156,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:text="Jelajahi Sekarang →"
-                    android:textColor="#FFFFFF"
-                    android:textStyle="bold" />
+                    android:textColor="#FF9800"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_rounded_white"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:elevation="2dp" />
             </LinearLayout>
 
             <!-- KATEGORI -->
@@ -166,97 +176,34 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:paddingStart="20dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:background="#FF9800"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="10dp"
-                        android:text="🍛 Makanan Nusantara"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/input_bg"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="10dp"
-                        android:text="🍹 Minuman Tradisional"
-                        android:textColor="#FF9800"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:background="@drawable/input_bg"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="10dp"
-                        android:text="🍰 Dessert Indonesia"
-                        android:textColor="#FF9800"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/input_bg"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="10dp"
-                        android:text="🌶️ Makanan Pedas"
-                        android:textColor="#FF9800"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </HorizontalScrollView>
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <!-- RESEP POPULER -->
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="20dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Resep Populer 🔥"
-                    android:textColor="#111111"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lihat Semua"
-                    android:textColor="#FF9800"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:paddingHorizontal="20dp"
+                android:text="Resep Populer 🔥"
+                android:textColor="#111111"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:nestedScrollingEnabled="false"
-                android:paddingStart="10dp" />
+                android:layout_marginHorizontal="20dp"
+                android:nestedScrollingEnabled="false" />
 
         </LinearLayout>
 
@@ -322,7 +269,7 @@
 
         <!-- FAVORIT -->
         <LinearLayout
-            android:id="@+id/navFavorite"
+            android:id="@+id/navSaved"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -332,7 +279,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@android:drawable/btn_star_big_on"
+                android:src="@drawable/ic_saved"
                 app:tint="#C4C4C4" />
 
             <TextView

@@ -1,38 +1,173 @@
 package com.calulla.projectseleranusantara
 
-import Recipe
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.calulla.projectseleranusantara.SavedActivity
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class Search : AppCompatActivity() {
 
-    // 🚨 PERBAIKAN 1: Deklarasi Variabel Kelas (agar tidak Unresolved Reference)
     private lateinit var adapter: RecipeVerticalAdapter
     private lateinit var edtSearch: EditText
     private lateinit var rvSearchResult: RecyclerView
 
-    // Gunakan 'lateinit' untuk List
-    private lateinit var originalList: MutableList<Recipe>
-    private lateinit var filteredList: MutableList<Recipe>
+    private var searchJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        // NAVBAR ----
+        setupNavbar()
+
+        edtSearch = findViewById(R.id.edtSearch)
+        rvSearchResult = findViewById(R.id.rvSearchResult)
+
+        adapter = RecipeVerticalAdapter(emptyList())
+        rvSearchResult.layoutManager = LinearLayoutManager(this)
+        rvSearchResult.adapter = adapter
+
+        // Load awal history pencarian
+        loadSearchHistory()
+
+        // Ambil resep awal (populer - max 5)
+        searchRecipesFromApi("")
+
+        // Event enter atau tombol search di keyboard
+        edtSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                actionId == EditorInfo.IME_ACTION_GO) {
+                
+                val query = edtSearch.text.toString().trim()
+                searchJob?.cancel()
+                searchRecipesFromApi(query)
+                
+                if (query.isNotEmpty()) {
+                    saveSearchHistory(query)
+                }
+
+                // Sembunyikan Keyboard
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(edtSearch.windowToken, 0)
+                true
+            } else {
+                false
+            }
+        }
+
+        // Event ketika mulai mengetik (debounce 500ms)
+        edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                searchJob?.cancel()
+
+                searchJob = lifecycleScope.launch {
+                    delay(500)
+                    val query = s.toString().trim()
+                    searchRecipesFromApi(query)
+                    
+                    // Otomatis simpan ke riwayat jika user diam mengetik selama 1.5 detik dan query tidak kosong
+                    if (query.isNotEmpty()) {
+                        delay(1000)
+                        if (edtSearch.text.toString().trim() == query) {
+                            saveSearchHistory(query)
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    private fun searchRecipesFromApi(query: String) {
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.instance.getRecipes(search = query)
+
+                if (response.isSuccessful && response.body()?.status == true) {
+                    val recipeList = response.body()!!.data.data
+                    // Jika query pencarian kosong, batasi resep populer maks 5 item
+                    val finalRecipes = if (query.isEmpty()) {
+                        recipeList.take(5)
+                    } else {
+                        recipeList
+                    }
+                    adapter.updateData(finalRecipes)
+                } else {
+                    Toast.makeText(this@Search, "Gagal mencari resep", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@Search, "Koneksi Error", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun saveSearchHistory(query: String) {
+        if (query.isEmpty()) return
+        val sharedPrefs = getSharedPreferences("search_history_prefs", MODE_PRIVATE)
+        val rawHistory = sharedPrefs.getString("history_list", "") ?: ""
+        val historyList = if (rawHistory.isEmpty()) mutableListOf() else rawHistory.split("||").toMutableList()
+
+        historyList.remove(query)
+        historyList.add(0, query)
+
+        val cappedHistory = historyList.take(5)
+        val newRawHistory = cappedHistory.joinToString("||")
+
+        sharedPrefs.edit().putString("history_list", newRawHistory).apply()
+        loadSearchHistory()
+    }
+
+    private fun loadSearchHistory() {
+        val sharedPrefs = getSharedPreferences("search_history_prefs", MODE_PRIVATE)
+        val rawHistory = sharedPrefs.getString("history_list", "") ?: ""
+        val historyList = if (rawHistory.isEmpty()) emptyList() else rawHistory.split("||")
+
+        val containerHistory = findViewById<LinearLayout>(R.id.containerHistory)
+        val layoutHistory = findViewById<LinearLayout>(R.id.layoutHistory)
+
+        layoutHistory.removeAllViews()
+
+        if (historyList.isEmpty()) {
+            containerHistory.visibility = View.GONE
+        } else {
+            containerHistory.visibility = View.VISIBLE
+
+            for (query in historyList) {
+                val chip = LayoutInflater.from(this).inflate(R.layout.item_history_chip, layoutHistory, false) as TextView
+                chip.text = query
+                chip.setOnClickListener {
+                    edtSearch.setText(query)
+                    edtSearch.setSelection(query.length)
+                    searchJob?.cancel()
+                    searchRecipesFromApi(query)
+                }
+                layoutHistory.addView(chip)
+            }
+        }
+    }
+
+    private fun setupNavbar() {
         val navHome = findViewById<LinearLayout>(R.id.navHome)
-        val navSearch = findViewById<LinearLayout>(R.id.navSearch)
         val navSaved = findViewById<LinearLayout>(R.id.navSaved)
 
         val iconHome = findViewById<ImageView>(R.id.iconHome)
@@ -46,8 +181,8 @@ class Search : AppCompatActivity() {
         iconHome.setColorFilter(Color.parseColor("#C4C4C4"))
         textHome.setTextColor(Color.parseColor("#C4C4C4"))
 
-        iconSearch.setColorFilter(Color.parseColor("#FFA200"))
-        textSearch.setTextColor(Color.parseColor("#FFA200"))
+        iconSearch.setColorFilter(Color.parseColor("#FF9800"))
+        textSearch.setTextColor(Color.parseColor("#FF9800"))
 
         iconSaved.setColorFilter(Color.parseColor("#C4C4C4"))
         textSaved.setTextColor(Color.parseColor("#C4C4C4"))
@@ -63,132 +198,5 @@ class Search : AppCompatActivity() {
             overridePendingTransition(0, 0)
             finish()
         }
-
-        // SEARCH UI ----
-        // 🚨 PERBAIKAN 2: Gunakan variabel anggota kelas yang sudah dideklarasikan
-        edtSearch = findViewById(R.id.edtSearch)
-        rvSearchResult = findViewById(R.id.rvSearchResult)
-
-        // ----------------------------------------
-        // 🔍 --- DATA INITIALIZATION ---
-        // ----------------------------------------
-
-        // 🚨 PERBAIKAN 3: Memenuhi semua parameter (9 parameter) yang dibutuhkan oleh Recipe
-        originalList = mutableListOf(
-            Recipe(
-                image = R.drawable.burger,
-                title = "Chicken Burger",
-                author = "Albert",
-                creatorAvatar = R.drawable.avatar, // Diberi nilai default
-                description = "Burger ayam crispy dengan saus BBQ spesial.", // Diberi nilai default
-                ingredients = listOf("Roti burger", "Daging ayam crispy"), // Diberi nilai default
-                username = "@albert99", // Diberi nilai default
-                rating = 4.7, // Diberi nilai default
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4" // Diberi nilai default
-            ),
-            Recipe(
-                image = R.drawable.kentaki,
-                title = "Crispy Fried Chicken",
-                author = "Erin Gemini",
-                creatorAvatar = R.drawable.avatar,
-                description = "Ayam goreng crispy ala Kentucky.",
-                ingredients = listOf("Ayam", "Tepung", "Bumbu"),
-                username = "@jameswk",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/h96RK21ovDU?si=5iV5-eCuZmBNcqCN"
-            ),
-            Recipe(
-                image = R.drawable.lontong,
-                title = "Lontong Sayur",
-                author = "Resep Wina",
-                creatorAvatar = R.drawable.avatar,
-                description = "Lontong kuah santan gurih.",
-                ingredients = listOf("Lontong", "Sayur", "Santan"),
-                username = "@chefC",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/91T206VNMpk?si=dEobVdZ2U4T0QYbW"
-            ),
-            Recipe(
-                image = R.drawable.pancake,
-                title = "Cute Pancake",
-                author = "Dimas",
-                creatorAvatar = R.drawable.avatar,
-                description = "Pancake lembut dengan topping buah.",
-                ingredients = listOf("Tepung", "Susu", "Telur"),
-                username = "@dimaschef",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/SaKgKfAqzAs?si=FHiKSeVZPZgHKTCG"
-            ),
-            Recipe(
-                R.drawable.sotoayam,
-                "Soto Ayam",
-                "Adrianne Curl",
-                R.drawable.avatar,
-                "Soto ayam hangat dengan kuah kuning khas.",
-                listOf("Ayam", "Soun", "Telur", "Daun bawang"),
-                username = "@adriannec",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/pJ-PMDJ0x38?si=Q1NfLjV5qA9mzCaL"
-            ),
-            Recipe(
-                R.drawable.nasi_kuning,
-                "Nasi Kuning",
-                "Budi",
-                R.drawable.avatar,
-                "Nasi kuning gurih dengan lauk komplet.",
-                listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
-                username = "@budicook",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
-            ),
-            Recipe(
-                R.drawable.ribeye,
-                "Traditional spare ribs baked",
-                "Clara Luis",
-                R.drawable.avatar,
-                "Spare ribs panggang dengan bumbu tradisional.",
-                listOf("Daging ribs", "Lada", "Garam", "Madu"),
-                username = "@claraluis",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/q0p8Nyag5dQ?si=DIPdq_HotMiGi0Y7"
-            )
-        )
-
-        filteredList = originalList.toMutableList()
-
-        // INISIALISASI ADAPTER DAN RV (Hanya lakukan sekali)
-        adapter = RecipeVerticalAdapter(filteredList)
-        rvSearchResult.layoutManager = LinearLayoutManager(this)
-        rvSearchResult.adapter = adapter
-
-        // HAPUS addTextChangedListener LAMBDA YANG SALAH
-
-        // Event ketika mengetik (Sudah benar)
-        edtSearch.addTextChangedListener(object : TextWatcher { // Ganti edt menjadi edtSearch
-            override fun afterTextChanged(s: Editable?) {}
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                filterList(s.toString())
-            }
-        })
-    }
-
-    private fun filterList(query: String) {
-        filteredList.clear()
-
-        if (query.isEmpty()) {
-            filteredList.addAll(originalList)
-        } else {
-            filteredList.addAll(
-                originalList.filter {
-                    // FIX LOGIKA: Menggunakan it.title untuk pencarian
-                    it.title.contains(query, ignoreCase = true)
-                }
-            )
-        }
-
-        adapter.notifyDataSetChanged()
     }
 }

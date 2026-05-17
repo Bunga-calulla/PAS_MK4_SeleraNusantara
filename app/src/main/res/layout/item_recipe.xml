@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/input_bg">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imgRecipe"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/burger"
+        android:background="@drawable/rounded_img"
+        android:clipToOutline="true"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <!-- ID UNTUK JUDUL -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Judul Resep"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="#000000"/>
+
+        <!-- ID UNTUK DESKRIPSI -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi resep..."
+            android:textSize="13sp"
+            android:textColor="#777777"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="4dp"/>
+
+        <!-- ID UNTUK INFO TAMBAHAN -->
+        <TextView
+            android:id="@+id/tvInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔥 Tingkat: Mudah"
+            android:textSize="12sp"
+            android:textColor="#E65100"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -93,19 +93,23 @@
         android:paddingStart="20dp"
         android:scrollbars="none"
         android:layout_marginBottom="16dp">
+
+    </HorizontalScrollView>
         
-    <!-- TRENDING -->
+    <!-- SEARCH HISTORY -->
     <LinearLayout
+        android:id="@+id/containerHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pencarian Populer 🔥"
+            android:text="Riwayat Pencarian 🕒"
             android:textColor="#111111"
             android:textSize="16sp"
             android:textStyle="bold"/>
@@ -117,41 +121,11 @@
             android:layout_marginTop="10dp">
 
             <LinearLayout
+                android:id="@+id/layoutHistory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/input_bg"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp"
-                    android:text="Seblak"
-                    android:textColor="#FF9800"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/input_bg"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp"
-                    android:text="Rendang"
-                    android:textColor="#FF9800"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_bg"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="8dp"
-                    android:text="Bakso"
-                    android:textColor="#FF9800"
-                    android:textStyle="bold"/>
+                <!-- Dynamic history chips will be added here -->
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
@@ -186,6 +160,7 @@
 
         <!-- BERANDA -->
         <LinearLayout
+            android:id="@+id/navHome"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -193,12 +168,14 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iconHome"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_home"
                 app:tint="#BBBBBB"/>
 
             <TextView
+                android:id="@+id/textHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Beranda"
@@ -206,8 +183,9 @@
                 android:textSize="12sp"/>
         </LinearLayout>
 
-        <!-- PENCARIAN ACTIVE -->
+        <!-- SEARCH ACTIVE -->
         <LinearLayout
+            android:id="@+id/navSearch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -216,12 +194,14 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iconSearch"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_search"
                 app:tint="#FF9800"/>
 
             <TextView
+                android:id="@+id/textSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cari"
@@ -230,8 +210,9 @@
                 android:textStyle="bold"/>
         </LinearLayout>
 
-        <!-- TERSIMPAN -->
+        <!-- SAVED -->
         <LinearLayout
+            android:id="@+id/navSaved"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -239,12 +220,14 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iconSaved"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_saved"
                 app:tint="#BBBBBB"/>
 
             <TextView
+                android:id="@+id/textSaved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tersimpan"

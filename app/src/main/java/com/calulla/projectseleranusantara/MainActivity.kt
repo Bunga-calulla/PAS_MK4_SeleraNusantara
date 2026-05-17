@@ -1,148 +1,93 @@
 package com.calulla.projectseleranusantara
 
-import Recipe
-import android.content.Intent // DITAMBAHKAN: Untuk berpindah Activity
+import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout // DITAMBAHKAN: Untuk mengakses elemen navigasi
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var sessionManager: SessionManager
+    private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var categoryAdapter: HomeCategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val popularList = listOf(
-            Recipe(
-                image = R.drawable.burger,
-                title = "Chicken Burger",
-                author = "Albert",
-                creatorAvatar = R.drawable.avatar,
-                description = "Burger ayam crispy dengan saus BBQ spesial.",
-                ingredients = listOf(
-                    "Roti burger",
-                    "Daging ayam crispy",
-                    "Selada",
-                    "Tomat",
-                    "Saus BBQ"
-                ),
-                username = "@albert99",
-                rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
-            ),
-            Recipe(
-                image = R.drawable.pancake,
-                title = "Cute Pancake",
-                author = "Sheila",
-                creatorAvatar = R.drawable.avatar,
-                description = "Pancake lembut dengan topping buah segar.",
-                ingredients = listOf("Tepung", "Susu", "Telur", "Gula", "Madu"),
-                username = "@sheilafoodie",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/SaKgKfAqzAs?si=FHiKSeVZPZgHKTCG"
-            ),
-            Recipe(
-                image = R.drawable.kentaki,
-                title = "Crispy Fried Chicken",
-                author = "Erin Gemini",
-                creatorAvatar = R.drawable.avatar,
-                description = "Ayam goreng crispy ala Kentucky dengan bumbu rahasia.",
-                ingredients = listOf("Ayam", "Tepung", "Lada", "Garam", "Telur"),
-                username = "@jameswk",
-                rating = 4.7,
-                youtubeLink = "https://www.youtube.com/watch?v=tSDtNCp51s4"
-            )
-        )
+        sessionManager = SessionManager(this)
 
+        // Tampilkan Nama User dari Session
+        val tvUserName = findViewById<TextView>(R.id.tvUserName)
+        tvUserName.text = sessionManager.getUserName() ?: "Guest"
 
-        val newList = listOf(
-            Recipe(
-                R.drawable.sotoayam,
-                "Soto Ayam",    
-                "Adrianne Curl",
-                R.drawable.avatar,
-                "Soto ayam hangat dengan kuah kuning khas.",
-                listOf("Ayam", "Soun", "Telur", "Daun bawang"),
-                username = "@adriannec",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/pJ-PMDJ0x38?si=Q1NfLjV5qA9mzCaL"
-            ),
-            Recipe(
-                R.drawable.nasi_kuning,
-                "Nasi Kuning",
-                "Budi",
-                R.drawable.avatar,
-                "Nasi kuning gurih dengan lauk komplet.",
-                listOf("Nasi", "Kunyit", "Telur", "Ayam suwir"),
-                username = "@budicook",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
-            ),
-            Recipe(
-                R.drawable.lontong,
-                "Lontong Sayur",
-                "Resep Wina",
-                R.drawable.avatar,
-                "Lontong dengan kuah santan gurih dan rempah.",
-                listOf("Lontong", "Ayam", "Santan", "Sayur labu"),
-                username = "@dimaschef",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/91T206VNMpk?si=dEobVdZ2U4T0QYbW"
-            )
-        )
+        // 🛑 FUNGSI LOGOUT (TOMBOL POJOK KANAN ATAS) 🛑
+        val btnLogout = findViewById<FrameLayout>(R.id.btnLogout)
+        btnLogout.setOnClickListener {
+            // Hapus sesi (Token, Role, dll) dari SessionManager
+            sessionManager.clearSession()
+            Toast.makeText(this, "Berhasil Keluar", Toast.LENGTH_SHORT).show()
 
-
-        val exploreList = listOf(
-            Recipe(
-                R.drawable.ribeye,
-                "Traditional spare ribs baked",
-                "Clara Luis",
-                R.drawable.avatar,
-                "Spare ribs panggang dengan bumbu tradisional.",
-                listOf("Daging ribs", "Lada", "Garam", "Madu"),
-                username = "@claraluis",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/q0p8Nyag5dQ?si=DIPdq_HotMiGi0Y7"
-            ),
-            Recipe(
-                R.drawable.nasi_kuning,
-                "Spicy fried rice chicken bali",
-                "Mega Haru",
-                R.drawable.avatar,
-                "Nasi goreng pedas khas Bali.",
-                listOf("Nasi", "Ayam", "Cabe", "Kecap"),
-                username = "@megaharu",
-                rating = 4.7,
-                youtubeLink = "https://youtu.be/qPrZT0btu7s?si=0Y7OFiv6RfoFvFe7"
-            )
-        )
-
-
-        // Popular
-        findViewById<RecyclerView>(R.id.rvPopular).apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = RecipeminumanusantaraAdapter(popularList)
+            // Lempar kembali ke halaman Login
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // Hancurkan halaman Home biar nggak bisa di-back ke sini lagi
         }
 
-        // New
-        findViewById<RecyclerView>(R.id.rvNew).apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            adapter = RecipeminumanusantaraAdapter(newList)
+        // Klik Kolom Cari Dummy di Home langsung mengarah ke halaman Search (Cari)
+        val searchBarContainer = findViewById<LinearLayout>(R.id.searchBarContainer)
+        searchBarContainer.setOnClickListener {
+            startActivity(Intent(this, Search::class.java))
+            overridePendingTransition(0, 0)
         }
 
-        // Explore
-        findViewById<RecyclerView>(R.id.rvExplore).apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = RecipeVerticalAdapter(exploreList)
+        // Setup Category Horizontal RecyclerView
+        val rvCategories = findViewById<RecyclerView>(R.id.rvCategories)
+        rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        categoryAdapter = HomeCategoryAdapter(emptyList()) { clickedCategory ->
+            if (clickedCategory.id == -1) {
+                // Semua Resep
+                fetchRecipesFromAPI(null)
+            } else {
+                // Pindah ke Halaman Detail Kategori Dinamis!
+                val intent = Intent(this, CategoryActivity::class.java).apply {
+                    putExtra("CATEGORY_ID", clickedCategory.id)
+                    putExtra("CATEGORY_NAME", clickedCategory.name)
+                }
+                startActivity(intent)
+            }
         }
+        rvCategories.adapter = categoryAdapter
+
+        // Setup RecyclerView Resep Populer
+        val rvPopular = findViewById<RecyclerView>(R.id.rvPopular)
+        rvPopular.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        // Inisialisasi Adapter kosong dulu (nanti diisi pas data dari API datang)
+        recipeAdapter = RecipeAdapter(emptyList()) { clickedRecipe ->
+            // Aksi kalau resep diklik -> Pindah ke DetailActivity
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("RECIPE_ID", clickedRecipe.id)
+            startActivity(intent)
+        }
+        rvPopular.adapter = recipeAdapter
+
+        // ==========================================
+        // 🔥 TARIK DATA KATEGORI & RESEP DARI LARAVEL (API) 🔥
+        // ==========================================
+        fetchCategoriesFromAPI()
+        fetchRecipesFromAPI(null)
 
         // ----------------------------------------
         // LOGIKA NAVIGASI BOTTOM BAR
         // ----------------------------------------
-
-
         val navSearch = findViewById<LinearLayout>(R.id.navSearch)
         navSearch.setOnClickListener {
             startActivity(Intent(this, Search::class.java))
@@ -154,6 +99,40 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SavedActivity::class.java))
             overridePendingTransition(0, 0)
         }
+    }
 
+    private fun fetchCategoriesFromAPI() {
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.instance.getCategories()
+                if (response.isSuccessful && response.body()?.status == true) {
+                    val categoryList = response.body()!!.data
+                    categoryAdapter.updateData(categoryList)
+                } else {
+                    Toast.makeText(this@MainActivity, "Gagal mengambil data kategori", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@MainActivity, "Koneksi Error Kategori: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun fetchRecipesFromAPI(categoryId: Int? = null) {
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitClient.instance.getRecipes(categoryId = categoryId)
+
+                if (response.isSuccessful && response.body()?.status == true) {
+                    val recipeList = response.body()!!.data.data // Ambil list resep
+
+                    // Update data di adapter
+                    recipeAdapter.updateData(recipeList)
+                } else {
+                    Toast.makeText(this@MainActivity, "Gagal mengambil data resep", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@MainActivity, "Koneksi Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

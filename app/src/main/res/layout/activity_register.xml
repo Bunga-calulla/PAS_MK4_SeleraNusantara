@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F4F4"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <!-- ScrollView -->
     <ScrollView
@@ -110,6 +110,7 @@
 
                 <!-- Sudah punya akun -->
                 <TextView
+                    android:id="@+id/tvSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sudah punya akun?"
@@ -119,13 +120,14 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="16dp"/>
 
+
                 <!-- Tombol Daftar -->
                 <Button
                     android:id="@+id/btnSignUp"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:text="Daftar"
-                    android:backgroundTint="#FFA200"
+                    android:backgroundTint="#FF9800"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:layout_marginBottom="20dp"

@@ -1,10 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminDashboardActivity">
+    android:orientation="vertical"
+    android:background="#FAFAFA">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- HEADER CARD -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="20dp"
+        android:background="#FFFFFF"
+        android:elevation="6dp"
+        android:gravity="center_vertical">
+
+        <!-- Bagian Kiri: Title & Subtitle -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin Dashboard 👨‍🍳"
+                android:textColor="#111111"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kelola semua resep masakan"
+                android:textColor="#777777"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Bagian Kanan: Tombol Tambah -->
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="+ Tambah"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:backgroundTint="#FF9800"
+            app:cornerRadius="12dp"
+            android:paddingHorizontal="16dp"/>
+
+    </LinearLayout>
+
+    <!-- PANDUAN KECIL & TOMBOL KATEGORI -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daftar Resep"
+            android:textColor="#111111"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnManageCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Kelola Kategori"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#4CAF50"
+            app:cornerRadius="8dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Keluar"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#E53935"
+            app:cornerRadius="8dp"/>
+    </LinearLayout>
+
+    <!-- RECYCLERVIEW (LIST RESEP) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="20dp"
+        android:clipToPadding="false"/>
+
+</LinearLayout>

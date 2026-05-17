@@ -1,6 +1,5 @@
 package com.calulla.projectseleranusantara
 
-import Recipe
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,53 +7,55 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class RecipeminumanusantaraAdapter(
-    private val items: List<Recipe>
+    private var items: List<RecipeData>
 ) : RecyclerView.Adapter<RecipeminumanusantaraAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val img: ImageView = view.findViewById(R.id.imgRecipe)
-        val title: TextView = view.findViewById(R.id.txtTitle)
-        val author: TextView = view.findViewById(R.id.txtAuthor)
+    fun updateData(newItems: List<RecipeData>) {
+        items = newItems
+        notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_recipe_makanan_nusantara, parent, false)
-        return ViewHolder(v)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // PERHATIAN: Pastikan ID-nya sama dengan yang ada di XML kamu
+        val img: ImageView = view.findViewById(R.id.imgExplore)
+        val title: TextView = view.findViewById(R.id.txtExploreTitle)
+        val author: TextView = view.findViewById(R.id.txtExploreAuthor)
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        // PERHATIAN: Kalau nama layout XML-nya bukan item_explore, tolong diganti ya!
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_explore, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        // Set data list
-        holder.img.setImageResource(item.image)
+        // Load gambar dari Server Laravel pakai custom loadImage
+        holder.img.loadImage(item.image)
+
         holder.title.text = item.title
-        holder.author.text = item.author
+        holder.author.text = item.user?.name ?: "Anonim"
 
-        // Klik item → pindah ke DetailActivity
         holder.itemView.setOnClickListener {
-            val ctx = holder.itemView.context
-            val intent = Intent(ctx, DetailActivity::class.java)
+            val context = holder.itemView.context
+            val intent = Intent(context, DetailActivity::class.java)
 
-            intent.putExtra("image", item.image)
-            intent.putExtra("title", item.title)
-            intent.putExtra("author", item.author)
-            intent.putExtra("description", item.description)
-            intent.putExtra("rating", item.rating)
-            intent.putExtra("creatorAvatar", item.creatorAvatar)
-            intent.putExtra("username", item.username)
+            // 🔥 CUKUP KIRIM ID SAJA 🔥
+            intent.putExtra("RECIPE_ID", item.id)
 
-            // Ingredients
-            intent.putStringArrayListExtra("ingredients", ArrayList(item.ingredients))
-
-            // YOUTUBE LINK (NEW)
-            intent.putExtra("youtubeLink", item.youtubeLink)
-
-            ctx.startActivity(intent)
+            context.startActivity(intent)
         }
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount(): Int {
+        return items.size
+    }
 }

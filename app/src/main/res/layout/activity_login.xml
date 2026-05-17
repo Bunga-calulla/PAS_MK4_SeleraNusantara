@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F4F4"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -58,15 +58,17 @@
 
                 <!-- Username -->
                 <EditText
-                    android:id="@+id/etUsername"
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/input_bg"
-                    android:hint="Nama Pengguna"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
                     android:paddingHorizontal="16dp"
                     android:textColor="#000"
                     android:textColorHint="#555" />
+
 
                 <!-- Password -->
                 <EditText
